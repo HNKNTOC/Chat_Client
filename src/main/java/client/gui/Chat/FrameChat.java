@@ -2,6 +2,9 @@ package client.gui.Chat;
 
 
 
+import client.gui.Chat.componentsChat.JMessageList;
+import client.gui.Chat.componentsChat.JMessageListBloc;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -14,19 +17,21 @@ import java.awt.event.ActionListener;
  */
 class FrameChat extends JFrame{
 
-    private JMessageDisplay messageDisplay;
+    private JMessageList messageDisplay;
     private JTextField textFieldNewMessage = new JTextField();
     private JButton buttonPrint = new JButton("Go!");
 
     public FrameChat(){
-        this.messageDisplay = new JMessegeList();
+        super("Chat");
+        this.messageDisplay = new JMessageListBloc();
     }
 
-    public FrameChat(JMessageDisplay messageDisplaying){
+    public FrameChat(JMessageList messageDisplaying){
+        super("Chat");
         this.messageDisplay = messageDisplaying;
     }
 
-    public JMessageDisplay getMessageDisplay() {
+    public JMessageList getMessageDisplay() {
         return messageDisplay;
     }
 

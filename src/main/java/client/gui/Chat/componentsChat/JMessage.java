@@ -1,26 +1,29 @@
-package client.gui.Chat;
+package client.gui.Chat.componentsChat;
 
 import javax.swing.*;
 import java.awt.*;
 
 /**
- * Содержит имя пользователя - nameAuthor
- *          содержания сообщения - content
- *          дату - data
+ * Графическое отображение сообщения.
  */
-class JMessage extends JPanel {
+public class JMessage extends JPanel {
     private String nameAuthor;
     private String content;
     private String data;
 
-    public JMessage() {
-        go();
-    }
 
     public JMessage(String nameAuthor, String content, String data) {
         this.nameAuthor = nameAuthor;
         this.content = content;
         this.data = data;
+
+        go();
+    }
+
+    public JMessage(Message massage) {
+        this.nameAuthor = massage.getNameAuthor();
+        this.content = massage.getContent();
+        this.data = massage.getData();
 
         go();
     }

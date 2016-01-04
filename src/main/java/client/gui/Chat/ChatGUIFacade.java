@@ -2,6 +2,9 @@ package client.gui.Chat;
 
 
 
+import client.gui.Chat.componentsChat.JMessageList;
+import client.gui.Chat.componentsChat.JMessageListBloc;
+import client.gui.Chat.componentsChat.Message;
 import client.observer.ObservableMessages;
 import client.observer.ObserverMessage;
 
@@ -15,18 +18,24 @@ import java.util.ArrayList;
 public class ChatGUIFacade implements ObservableMessages,ObserverMessage {
     private FrameChat frameChat;
     private ArrayList<ObserverMessage> OBSERVER_MESSAGES = new ArrayList<>();
+    private JMessageList jMessageList = new JMessageListBloc();
 
     public ChatGUIFacade() {
-        frameChat = new FrameChat(new JMessegeList());
+
+    }
+
+    public void setJMessageList(JMessageList jMessageList){
+        this.jMessageList=jMessageList;
+    }
+
+    public void chatStart(){
+        frameChat = new FrameChat(jMessageList);
         frameChat.addListenerButtonPrint(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 notifyNewMessages("Hnkntoc Client",frameChat.getTextNewMessage(),"Data Client");
             }
         });
-    }
-
-    public void chatStart(){
         frameChat.start();
     }
 
@@ -49,6 +58,6 @@ public class ChatGUIFacade implements ObservableMessages,ObserverMessage {
 
     @Override
     public void updateNewMessage(String nameAuthor, String content, String data) {
-        frameChat.getMessageDisplay().addMessage(new JMessage(nameAuthor, content, data));
+        frameChat.getMessageDisplay().addMessage(new Message(nameAuthor,content,data));
     }
 }
