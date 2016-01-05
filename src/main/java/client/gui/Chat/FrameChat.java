@@ -84,9 +84,8 @@ class FrameChat extends JFrame{
         c.gridx = 0;
         panelCenter.add(scrollPaneList, c);
 
-
-
-
     }
+
+
 
 }

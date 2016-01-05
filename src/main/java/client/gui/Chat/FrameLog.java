@@ -14,7 +14,7 @@ class FrameLog extends JFrame{
     private JButton buttonConnect = new JButton("Connect");
 
     public FrameLog() throws HeadlessException {
-        super("FrameLog :)");
+        super("Log :)");
     }
 
     public void start(){
@@ -87,4 +87,8 @@ class FrameLog extends JFrame{
         return new String(fieldUserPassword.getPassword());
     }
 
+    public void stop() {
+        setVisible(false);
+        dispose();
+    }
 }

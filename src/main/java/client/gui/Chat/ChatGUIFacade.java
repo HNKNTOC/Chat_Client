@@ -2,6 +2,8 @@ package client.gui.Chat;
 
 
 
+import client.ProgramAttributes;
+import client.connectServer.ClientFacade;
 import client.gui.Chat.componentsChat.JMessageList;
 import client.gui.Chat.componentsChat.JMessageListBloc;
 import client.gui.Chat.componentsChat.Message;
@@ -17,18 +19,36 @@ import java.util.ArrayList;
  */
 public class ChatGUIFacade implements ObservableMessages,ObserverMessage {
     private FrameChat frameChat;
+    private FrameLog frameLog;
+
+    private ClientFacade clientFacade;
+
     private ArrayList<ObserverMessage> OBSERVER_MESSAGES = new ArrayList<>();
     private JMessageList jMessageList = new JMessageListBloc();
 
-    public ChatGUIFacade() {
-
+    public ChatGUIFacade(ClientFacade clientFacade) {
+        this.clientFacade = clientFacade;
     }
 
     public void setJMessageList(JMessageList jMessageList){
         this.jMessageList=jMessageList;
     }
 
-    public void chatStart(){
+    public void frameLogStart(){
+        frameLog = new FrameLog();
+        frameLog.start();
+        frameLog.addListenerConnect(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ProgramAttributes.nameUser = frameLog.getUserName();
+                frameLog.stop();
+                clientFacade.clientStart();
+                frameChatStart();
+            }
+        });
+    }
+
+    public void frameChatStart(){
         frameChat = new FrameChat(jMessageList);
         frameChat.addListenerButtonPrint(new ActionListener() {
             @Override
@@ -58,6 +78,9 @@ public class ChatGUIFacade implements ObservableMessages,ObserverMessage {
 
     @Override
     public void updateNewMessage(String nameAuthor, String content, String data) {
+        if(frameChat==null){
+            return;
+        }
         frameChat.getMessageDisplay().addMessage(new Message(nameAuthor,content,data));
     }
 }

@@ -41,15 +41,6 @@ import java.util.Scanner;
 
             outMessage(ProgramAttributes.nameUser);
 
-            Scanner scanner = new Scanner(System.in);
-            String s;
-            while (scanner.hasNext()){
-                s = scanner.nextLine();
-                outMessage(s);
-            }
-
-            System.out.println("Client stop");
-
         } catch (IOException e) {
             e.printStackTrace();
         }

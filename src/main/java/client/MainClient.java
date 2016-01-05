@@ -8,8 +8,8 @@ import client.gui.Chat.componentsChat.JMessageListTXT;
 public class MainClient {
 
     public static void main(String[] args) {
-        ChatGUIFacade chatGUIFacade = new ChatGUIFacade();
         ClientFacade clientFacade = new ClientFacade();
+        ChatGUIFacade chatGUIFacade = new ChatGUIFacade(clientFacade);
 
         ProgramAttributes.nameUser="Ctac";
 
@@ -18,7 +18,6 @@ public class MainClient {
 
         chatGUIFacade.setJMessageList(new JMessageListTXT());
 
-        chatGUIFacade.chatStart();
-        clientFacade.clientStart();
+        chatGUIFacade.frameLogStart();
     }
 }
