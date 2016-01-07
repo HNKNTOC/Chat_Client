@@ -11,8 +11,6 @@ public class MainClient {
         ClientFacade clientFacade = new ClientFacade();
         ChatGUIFacade chatGUIFacade = new ChatGUIFacade(clientFacade);
 
-        ProgramAttributes.nameUser="Ctac";
-
         chatGUIFacade.registerObserver(clientFacade);
         clientFacade.registerObserver(chatGUIFacade);
 

@@ -6,7 +6,7 @@ import java.awt.*;
 /**
  * Created by HNKNTOC on 04.01.2016.
  */
-class FrameWelcome extends JFrame {
+public class FrameWelcome extends JFrame {
     public FrameWelcome() throws HeadlessException {
         super("Welcome");
     }

@@ -1,5 +1,7 @@
 package client.gui.Chat.componentsChat;
 
+import client.gui.Chat.componentsChat.txt.MessageStandard;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -18,7 +20,7 @@ public class JMessageListBloc extends JPanel implements JMessageList {
 
 
     @Override
-    public void addMessage(Message message) {
+    public void addMessage(MessageStandard message) {
         add(new JMessage(message));
         updateUI();
     }

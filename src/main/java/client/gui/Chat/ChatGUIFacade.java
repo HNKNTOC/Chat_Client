@@ -6,7 +6,7 @@ import client.ProgramAttributes;
 import client.connectServer.ClientFacade;
 import client.gui.Chat.componentsChat.JMessageList;
 import client.gui.Chat.componentsChat.JMessageListBloc;
-import client.gui.Chat.componentsChat.Message;
+import client.gui.Chat.componentsChat.txt.MessageStandard;
 import client.observer.ObservableMessages;
 import client.observer.ObserverMessage;
 
@@ -54,6 +54,7 @@ public class ChatGUIFacade implements ObservableMessages,ObserverMessage {
             @Override
             public void actionPerformed(ActionEvent e) {
                 notifyNewMessages("Hnkntoc Client",frameChat.getTextNewMessage(),"Data Client");
+                frameChat.getTextFieldMessage().setText("");
             }
         });
         frameChat.start();
@@ -81,6 +82,6 @@ public class ChatGUIFacade implements ObservableMessages,ObserverMessage {
         if(frameChat==null){
             return;
         }
-        frameChat.getMessageDisplay().addMessage(new Message(nameAuthor,content,data));
+        frameChat.getMessageDisplay().addMessage(new MessageStandard(nameAuthor,content,data));
     }
 }
