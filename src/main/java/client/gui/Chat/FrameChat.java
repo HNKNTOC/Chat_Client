@@ -3,32 +3,28 @@ package client.gui.Chat;
 
 
 import client.gui.Chat.componentsChat.JMessageList;
-import client.gui.Chat.componentsChat.JMessageListBloc;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 /**
  * Чат для отображения сообщений и написания новых сообщений.
  * Содержит две панели panelCenter и panelNewMessage
  *  В panelCenter находится messageDisplay;
- *  В panelNewMessage textFieldNewMessage и buttonPrint,
+ *  В panelNewMessage textFieldMessage и buttonPrint,
  */
-class FrameChat extends JFrame{
+public class FrameChat extends JFrame{
 
     private JMessageList messageDisplay;
-    private JTextField textFieldNewMessage = new JTextField();
+    private JTextField textFieldMessage = new JTextField();
     private JButton buttonPrint = new JButton("Go!");
-
-    public FrameChat(){
-        super("Chat");
-        this.messageDisplay = new JMessageListBloc();
-    }
 
     public FrameChat(JMessageList messageDisplaying){
         super("Chat");
         this.messageDisplay = messageDisplaying;
+        addWindowListener(new ChatWindowsListner());
+        textFieldMessage.addKeyListener(new KeyListenerChat());
     }
 
     public JMessageList getMessageDisplay() {
@@ -40,13 +36,17 @@ class FrameChat extends JFrame{
     }
 
     public String getTextNewMessage(){
-        return textFieldNewMessage.getText();
+        return textFieldMessage.getText();
+    }
+
+    public JTextField getTextFieldMessage() {
+        return textFieldMessage;
     }
 
     public void start(){
         go();
 
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setSize(300,400);
         setLocationRelativeTo(null);
         setVisible(true);
@@ -66,7 +66,7 @@ class FrameChat extends JFrame{
 
 
         panelNewMessage.setLayout(new BoxLayout(panelNewMessage, BoxLayout.X_AXIS));
-        panelNewMessage.add(textFieldNewMessage);
+        panelNewMessage.add(textFieldMessage);
         panelNewMessage.add(buttonPrint);
 
 
@@ -86,6 +86,57 @@ class FrameChat extends JFrame{
 
     }
 
+    class ChatWindowsListner implements WindowListener{
+        @Override
+        public void windowOpened(WindowEvent e) {
+        }
 
+        @Override
+        public void windowClosing(WindowEvent e) {
+            System.exit(0);
+        }
 
+        @Override
+        public void windowClosed(WindowEvent e) {
+
+        }
+
+        @Override
+        public void windowIconified(WindowEvent e) {
+
+        }
+
+        @Override
+        public void windowDeiconified(WindowEvent e) {
+
+        }
+
+        @Override
+        public void windowActivated(WindowEvent e) {
+
+        }
+
+        @Override
+        public void windowDeactivated(WindowEvent e) {
+
+        }
+    }
+
+    class KeyListenerChat implements KeyListener{
+        @Override
+        public void keyTyped(KeyEvent e) {
+
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            if(e.getKeyCode()==KeyEvent.VK_ENTER){
+                buttonPrint.doClick();
+            }
+        }
+    }
 }

@@ -3,11 +3,13 @@ package client.gui.Chat;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /**
- * Created by HNKNTOC on 19.12.2015.
+ * Frame Log
  */
-class FrameLog extends JFrame{
+public class FrameLog extends JFrame{
 
     private JTextField fieldUserName = new JTextField();
     private JPasswordField fieldUserPassword = new JPasswordField();
@@ -29,6 +31,9 @@ class FrameLog extends JFrame{
 
     private void go(){
         GridBagLayout gridBagLayout = new GridBagLayout();
+
+        fieldUserName.addKeyListener(new KeyListenerLog());
+        fieldUserPassword.addKeyListener(new KeyListenerLog());
 
         JPanel panelMain = new JPanel();
         panelMain.setLayout(gridBagLayout);
@@ -90,5 +95,25 @@ class FrameLog extends JFrame{
     public void stop() {
         setVisible(false);
         dispose();
+    }
+
+
+    class KeyListenerLog implements KeyListener{
+        @Override
+        public void keyTyped(KeyEvent e) {
+
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            if(e.getKeyCode()==KeyEvent.VK_ENTER){
+                buttonConnect.doClick();
+            }
+        }
     }
 }
