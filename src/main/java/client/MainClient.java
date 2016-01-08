@@ -16,6 +16,6 @@ public class MainClient {
 
         chatGUIFacade.setJMessageList(new JMessageListTXT());
 
-        chatGUIFacade.frameLogStart();
+        chatGUIFacade.startFrameLog();
     }
 }

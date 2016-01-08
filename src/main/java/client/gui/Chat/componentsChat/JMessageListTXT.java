@@ -10,7 +10,7 @@ import java.awt.*;
 /**
  * Отображает JMessage типа чат
  */
-public class JMessageListTXT extends JPanel implements JMessageList {
+public class JMessageListTXT extends JPanel implements JMessageDisplay {
 
     private String txt ="";
     private JTextPane textPane;
@@ -38,7 +38,7 @@ public class JMessageListTXT extends JPanel implements JMessageList {
 
 
     @Override
-    public void addMessage(MessageStandard message) {
+    public void addMessage(Message message) {
         InstallerTextColor installer = new InstallerTextColorStandard();
         installer.addRegulation(ProgramAttributes.nameUser, new RuleColoringText() {
             @Override
@@ -97,6 +97,12 @@ public class JMessageListTXT extends JPanel implements JMessageList {
         } catch (BadLocationException e) {
             e.printStackTrace();
         }
+    }
+
+
+    @Override
+    public void removeAllMessage() {
+        textPane.setText("");
     }
 
     @Override

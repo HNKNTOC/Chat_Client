@@ -5,8 +5,10 @@ package client.connectServer;
 
 
 import client.ProgramAttributes;
+import client.ProgramSettings;
 import client.observer.ObservableMessages;
 
+import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -27,10 +29,10 @@ import java.util.Scanner;
         this.observable = observable;
     }
 
-    public void start(){
+    public boolean connect(){
         try {
-            System.out.println("Client start....");
-            Socket socket = new Socket("127.0.0.1",5050);
+            System.out.println("Client connect....");
+            Socket socket = new Socket(ProgramSettings.Connect.ip,ProgramSettings.Connect.port);
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
@@ -43,7 +45,9 @@ import java.util.Scanner;
 
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
+        return true;
     }
 
     public void outMessage(String txt){

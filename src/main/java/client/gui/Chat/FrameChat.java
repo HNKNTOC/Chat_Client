@@ -2,11 +2,13 @@ package client.gui.Chat;
 
 
 
-import client.gui.Chat.componentsChat.JMessageList;
+import client.gui.Chat.componentsChat.JMessageDisplay;
+import client.gui.Chat.componentsChat.txt.Message;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 /**
  * Чат для отображения сообщений и написания новых сообщений.
@@ -16,18 +18,18 @@ import java.awt.event.*;
  */
 public class FrameChat extends JFrame{
 
-    private JMessageList messageDisplay;
+    private JMessageDisplay messageDisplay;
     private JTextField textFieldMessage = new JTextField();
     private JButton buttonPrint = new JButton("Go!");
 
-    public FrameChat(JMessageList messageDisplaying){
+    public FrameChat(JMessageDisplay messageDisplaying){
         super("Chat");
         this.messageDisplay = messageDisplaying;
         addWindowListener(new ChatWindowsListner());
         textFieldMessage.addKeyListener(new KeyListenerChat());
     }
 
-    public JMessageList getMessageDisplay() {
+    public JMessageDisplay getMessageDisplay() {
         return messageDisplay;
     }
 
@@ -85,6 +87,14 @@ public class FrameChat extends JFrame{
         panelCenter.add(scrollPaneList, c);
 
     }
+
+    public void updateMessageDisplay(ArrayList<Message> messages){
+        messageDisplay.removeAllMessage();
+        for(Message message:messages){
+            messageDisplay.addMessage(message);
+        }
+    }
+
 
     class ChatWindowsListner implements WindowListener{
         @Override

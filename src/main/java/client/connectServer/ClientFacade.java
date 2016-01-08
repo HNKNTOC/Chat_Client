@@ -1,6 +1,8 @@
 package client.connectServer;
 
 
+import client.gui.Chat.componentsChat.txt.Message;
+import client.gui.Chat.componentsChat.txt.MessageStandard;
 import client.observer.ObservableMessages;
 import client.observer.ObserverMessage;
 
@@ -12,15 +14,17 @@ import java.util.ArrayList;
 public class ClientFacade implements ObservableMessages, ObserverMessage  {
     private Client client;
     private ArrayList<ObserverMessage> OBSERVER_MESSAGES = new ArrayList<>();
+    private ArrayList<Message> messages;
 
     public ClientFacade() {
         client = new Client(this);
+        messages = new ArrayList<>();
 
     }
 
 
-    public void clientStart(){
-        client.start();
+    public boolean clientStart(){
+        return client.connect();
     }
 
     @Override
@@ -35,6 +39,7 @@ public class ClientFacade implements ObservableMessages, ObserverMessage  {
 
     @Override
     public void notifyNewMessages(String nameAuthor, String content, String data) {
+        messages.add(new MessageStandard(nameAuthor,content,data));
         for(ObserverMessage observerMessage:OBSERVER_MESSAGES){
             observerMessage.updateNewMessage(nameAuthor, content, data);
         }
@@ -46,4 +51,7 @@ public class ClientFacade implements ObservableMessages, ObserverMessage  {
         client.outMessage(content);
     }
 
+    public ArrayList<Message> getAllMessages() {
+        return messages;
+    }
 }

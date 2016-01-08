@@ -1,5 +1,6 @@
 package client.gui.Chat.componentsChat;
 
+import client.gui.Chat.componentsChat.txt.Message;
 import client.gui.Chat.componentsChat.txt.MessageStandard;
 
 import javax.swing.*;
@@ -22,7 +23,7 @@ public class JMessage extends JPanel {
         go();
     }
 
-    public JMessage(MessageStandard massage) {
+    public JMessage(Message massage) {
         this.nameAuthor = massage.getNameAuthor();
         this.content = massage.getContent();
         this.data = massage.getData();
