@@ -72,7 +72,6 @@ public class FrameChat extends JFrame{
         panelNewMessage.add(buttonPrint);
 
 
-        JScrollPane scrollPaneList = new JScrollPane(messageDisplay.getJPanel());
         //add messageDisplay
         c.fill = GridBagConstraints.BOTH;
         c.anchor = GridBagConstraints.CENTER;
@@ -84,7 +83,7 @@ public class FrameChat extends JFrame{
 
         c.gridy = 0;
         c.gridx = 0;
-        panelCenter.add(scrollPaneList, c);
+        panelCenter.add(messageDisplay.getComponent(), c);
 
     }
 

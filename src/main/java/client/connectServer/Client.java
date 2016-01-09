@@ -50,10 +50,20 @@ import java.util.Scanner;
         return true;
     }
 
+    /**
+     * Отправляет сообщение серверу.
+     * @param txt текст сообщения.
+     */
     public void outMessage(String txt){
         writer.println(txt);
     }
 
+    /**
+     * Принимает сообщения от сервера.
+     * @param nameAuthor
+     * @param content
+     * @param data
+     */
     public void newMessage(String nameAuthor, String content, String data){
         System.out.println(nameAuthor+":"+content+", "+data);
         observable.notifyNewMessages(nameAuthor, content, data);

@@ -88,7 +88,7 @@ public class FrameSettings extends JFrame {
         setVisible(true);
     }
 
-    public void addNewComponent(Component component,
+    private void addNewComponent(Component component,
                                 int gridy, int gridx,
                                 int gridwidth, int gridheight,
                                 int fill, int anchor, double weighty, double weightx){
@@ -121,6 +121,7 @@ public class FrameSettings extends JFrame {
             ProgramSettings.Connect.ip=textFieldIp.getText();
             ProgramSettings.Connect.
                     port=Integer.parseInt(textFieldPort.getText());
+            ProgramSettings.View.numberDisplay=comboBoxDisplay.getSelectedIndex();
         }
     }
 

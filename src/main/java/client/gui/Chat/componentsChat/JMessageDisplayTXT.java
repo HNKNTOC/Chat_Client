@@ -10,14 +10,14 @@ import java.awt.*;
 /**
  * Отображает JMessage типа чат
  */
-public class JMessageListTXT extends JPanel implements JMessageDisplay {
+public class JMessageDisplayTXT extends JPanel implements JMessageDisplay {
 
     private String txt ="";
     private JTextPane textPane;
     private Document document;
     private static AttributeSet attributeSet;
 
-    public JMessageListTXT() {
+    public JMessageDisplayTXT() {
         go();
     }
 
@@ -106,13 +106,13 @@ public class JMessageListTXT extends JPanel implements JMessageDisplay {
     }
 
     @Override
-    public JPanel getJPanel() {
+    public Component getComponent() {
         return this;
     }
 
     public static void main(String[] args) {
         JFrame jFrame = new JFrame();
-        JMessageListTXT listTXT = new JMessageListTXT();
+        JMessageDisplayTXT listTXT = new JMessageDisplayTXT();
 
         listTXT.addMessage(new MessageStandard("HNKNTOC","qwedqwed qwd qw d qw dqw   HGUK dus igdsj ds ds adf ",""));
         listTXT.addMessage(new MessageStandard("Server","Hsadfsadfsadfdfdf",""));

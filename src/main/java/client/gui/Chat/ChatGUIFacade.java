@@ -4,8 +4,9 @@ package client.gui.Chat;
 
 import client.ProgramAttributes;
 import client.connectServer.ClientFacade;
+import client.gui.Chat.componentsChat.FactoryMessageDisplay;
 import client.gui.Chat.componentsChat.JMessageDisplay;
-import client.gui.Chat.componentsChat.JMessageListBloc;
+import client.gui.Chat.componentsChat.JMessageDisplayBloc;
 import client.gui.Chat.componentsChat.txt.MessageStandard;
 import client.observer.ObservableMessages;
 import client.observer.ObserverMessage;
@@ -25,15 +26,10 @@ public class ChatGUIFacade implements ObservableMessages,ObserverMessage {
 
 
     private ArrayList<ObserverMessage> OBSERVER_MESSAGES = new ArrayList<>();
-    private JMessageDisplay jMessageList = new JMessageListBloc();
     private ClientFacade clientFacade;
 
     public ChatGUIFacade(ClientFacade clientFacade) {
         this.clientFacade = clientFacade;
-    }
-
-    public void setJMessageList(JMessageDisplay jMessageList){
-        this.jMessageList=jMessageList;
     }
 
     public void startFrameLog(){
@@ -50,7 +46,7 @@ public class ChatGUIFacade implements ObservableMessages,ObserverMessage {
     }
 
     public void startFrameChat(){
-        frameChat = new FrameChat(jMessageList);
+        frameChat = new FrameChat(FactoryMessageDisplay.getJMessageDisplay());
         frameChat.addListenerButtonPrint(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

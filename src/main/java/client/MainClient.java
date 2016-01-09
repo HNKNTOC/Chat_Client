@@ -3,7 +3,8 @@ package client;
 
 import client.connectServer.ClientFacade;
 import client.gui.Chat.ChatGUIFacade;
-import client.gui.Chat.componentsChat.JMessageListTXT;
+import client.gui.Chat.componentsChat.FactoryMessageDisplay;
+import client.gui.Chat.componentsChat.JMessageDisplayTXT;
 
 public class MainClient {
 
@@ -13,8 +14,6 @@ public class MainClient {
 
         chatGUIFacade.registerObserver(clientFacade);
         clientFacade.registerObserver(chatGUIFacade);
-
-        chatGUIFacade.setJMessageList(new JMessageListTXT());
 
         chatGUIFacade.startFrameLog();
     }

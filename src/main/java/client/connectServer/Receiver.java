@@ -4,6 +4,9 @@ package client.connectServer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by HNKNTOC on 26.12.2015.
@@ -33,6 +36,7 @@ class Receiver implements Runnable {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            listener.newMessage("Client","Server disconnect",new SimpleDateFormat("h:mm").format(new Date()));
         }
     }
 

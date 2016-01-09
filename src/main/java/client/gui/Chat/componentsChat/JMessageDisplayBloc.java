@@ -9,9 +9,9 @@ import java.awt.*;
 /**
  * Отображает JMessage списком
  */
-public class JMessageListBloc extends JPanel implements JMessageDisplay {
+public class JMessageDisplayBloc extends JPanel implements JMessageDisplay {
 
-    public JMessageListBloc() {
+    public JMessageDisplayBloc() {
         go();
     }
 
@@ -32,7 +32,7 @@ public class JMessageListBloc extends JPanel implements JMessageDisplay {
     }
 
     @Override
-    public JPanel getJPanel() {
-        return this;
+    public Component getComponent() {
+        return new JScrollPane(this);
     }
 }

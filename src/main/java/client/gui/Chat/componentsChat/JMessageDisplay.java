@@ -5,13 +5,27 @@ package client.gui.Chat.componentsChat;
 
 import client.gui.Chat.componentsChat.txt.Message;
 
-import javax.swing.*;
+
+import java.awt.*;
 
 /**
- * Отображает множество JMessage.
+ * Отображает добавляемые сообщения.
  */
 public interface JMessageDisplay {
+    /**
+     * Добавляет в дисплей сообщение
+     * @param message сообщение которое нужно добавить.
+     */
     void addMessage(Message message);
+
+    /**
+     * Удаляет все сообщения.
+     */
     void removeAllMessage();
-    JPanel getJPanel();
+
+    /**
+     * Возвращает Component на которой отображены сообщения
+     * @return Панель
+     */
+    Component getComponent();
 }

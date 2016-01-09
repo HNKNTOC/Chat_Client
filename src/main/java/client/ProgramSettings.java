@@ -10,6 +10,10 @@ public interface ProgramSettings {
     }
 
     class View{
+        public static final int DisplayTXT = 0;
+        public static final int DisplayBloc = 1;
 
+
+        public static int numberDisplay=0;//Номер дисплея на котором будут отображаться сообщения
     }
 }
